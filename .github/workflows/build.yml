@@ -28,11 +28,11 @@ jobs:
 
     - name: Build
       run: |
-        dotnet build -c Release -r win10-x64 --self-contained false
+        dotnet build -c Release
 
     - name: Publish
       run: |
-        dotnet publish -c Release -r win10-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true --output ./publish
+        dotnet publish SimpleWeather.Windows.csproj -c Release -r win10-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true --output ./publish
 
     - name: Create Package
       run: |

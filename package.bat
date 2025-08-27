@@ -6,14 +6,14 @@ echo SimpleWeather Windows Packaging Script
 echo ========================================
 
 set CONFIGURATION=Release
-set PLATFORM=x64
+set PLATFORM=win10-x64
 set OUTPUT_DIR=package
 set PUBLISH_DIR=publish
 set PACKAGE_NAME=SimpleWeather-Windows
 
 echo.
 echo Building project...
-dotnet publish -c %CONFIGURATION% -r win10-%PLATFORM% --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true --output %PUBLISH_DIR%
+dotnet publish SimpleWeather.Windows.csproj -c %CONFIGURATION% -r %PLATFORM% --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true --output %PUBLISH_DIR%
 
 if %errorlevel% neq 0 (
     echo.
