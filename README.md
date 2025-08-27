@@ -92,6 +92,11 @@ If you encounter build issues, try the following:
    - Check that the Windows App SDK is properly installed
    - Try building with `msbuild` instead of `dotnet build`
 
+5. If you encounter target framework errors:
+   - Ensure that restore has run successfully
+   - Check that the RuntimeIdentifiers in the project file match your target platform
+   - Try running `dotnet restore` and `msbuild /t:Restore` before building
+
 ## GitHub Actions
 
 This repository includes GitHub Actions for automated building and packaging:

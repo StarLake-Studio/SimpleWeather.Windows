@@ -70,6 +70,7 @@ dotnet workload install wasm-tools
 echo.
 echo Restoring dependencies...
 dotnet restore
+msbuild SimpleWeather.Windows.csproj /t:Restore /p:Configuration=%CONFIGURATION% /p:Platform=%PLATFORM%
 
 echo.
 echo Building SimpleWeather for Windows...
