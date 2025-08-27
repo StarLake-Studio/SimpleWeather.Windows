@@ -23,6 +23,11 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
+    - name: Install Workloads
+      run: |
+        dotnet workload install windowsappsdk
+        dotnet workload install wasm-tools
+
     - name: Restore dependencies
       run: dotnet restore
 

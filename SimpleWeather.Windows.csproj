@@ -11,10 +11,11 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <WindowsPackageType>None</WindowsPackageType>
-    <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>true</SelfContained>
-    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <ApplicationIcon>Assets\WeatherIcon.ico</ApplicationIcon>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
   </PropertyGroup>
 
   <ItemGroup>
@@ -53,8 +54,10 @@
   <!-- Application Icon -->
   <ItemGroup>
     <None Remove="Assets\WeatherIcon.ico" />
+    <None Remove="Assets\WeatherIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\WeatherIcon.ico" />
+    <Content Include="Assets\WeatherIcon.png" />
   </ItemGroup>
 </Project>

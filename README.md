@@ -71,6 +71,18 @@ This application is integrated with QWeather (和风天气) API to provide real 
 2. Update the `API_KEY` constant in `Services/WeatherConfig.cs`
 3. The application will automatically use the API to fetch real weather data
 
+## Troubleshooting
+
+If you encounter build issues, try the following:
+
+1. Install required workloads:
+   ```
+   dotnet workload install windowsappsdk
+   dotnet workload install wasm-tools
+   ```
+2. Clean and rebuild the project
+3. Ensure you have the latest Windows App SDK installed
+
 ## GitHub Actions
 
 This repository includes GitHub Actions for automated building and packaging:

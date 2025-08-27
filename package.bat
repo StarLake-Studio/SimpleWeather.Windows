@@ -12,7 +12,20 @@ set PUBLISH_DIR=publish
 set PACKAGE_NAME=SimpleWeather-Windows
 
 echo.
+echo Installing required workloads...
+dotnet workload install windowsappsdk
+dotnet workload install wasm-tools
+
+echo.
+echo Restoring dependencies...
+dotnet restore
+
+echo.
 echo Building project...
+dotnet build -c %CONFIGURATION%
+
+echo.
+echo Publishing project...
 dotnet publish SimpleWeather.Windows.csproj -c %CONFIGURATION% -r %PLATFORM% --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true --output %PUBLISH_DIR%
 
 if %errorlevel% neq 0 (
