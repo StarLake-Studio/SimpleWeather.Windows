@@ -25,8 +25,8 @@
 
 ## Changelog
 
-**Full Changelog**: https://github.com/your-username/SimpleWeather.Windows/compare/{{previousTag}}...{{currentTag}}
+**Full Changelog**: https://github.com/StarLake-Studio/SimpleWeather.Windows/compare/{{previousTag}}...{{currentTag}}
 
 ## Feedback
 
-If you encounter any issues or have suggestions for improvements, please [open an issue](https://github.com/your-username/SimpleWeather.Windows/issues) on GitHub.
+If you encounter any issues or have suggestions for improvements, please [open an issue](https://github.com/StarLake-Studio/SimpleWeather.Windows/issues) on GitHub.
