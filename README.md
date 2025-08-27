@@ -99,6 +99,10 @@ If you encounter build issues, try the following:
    - Try running `dotnet restore -r win-x64` before building
    - Make sure the RuntimeIdentifier is explicitly set in the build command
 
+6. If you encounter unsafe code errors:
+   - Ensure that `AllowUnsafeBlocks` is set to `true` in the project file
+   - Make sure the build command includes the `/p:AllowUnsafeBlocks=true` parameter
+
 ## GitHub Actions
 
 This repository includes GitHub Actions for automated building and packaging:

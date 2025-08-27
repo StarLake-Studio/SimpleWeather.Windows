@@ -78,7 +78,7 @@ echo Configuration: %CONFIGURATION%
 echo Platform: %PLATFORM%
 echo.
 
-msbuild SimpleWeather.Windows.csproj /p:Configuration=%CONFIGURATION% /p:Platform=%PLATFORM%
+msbuild SimpleWeather.Windows.csproj /p:Configuration=%CONFIGURATION% /p:Platform=%PLATFORM% /p:AllowUnsafeBlocks=true
 
 if %errorlevel% == 0 (
     echo.

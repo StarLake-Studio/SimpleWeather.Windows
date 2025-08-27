@@ -38,7 +38,7 @@ jobs:
 
     - name: Build
       run: |
-        msbuild SimpleWeather.Windows.csproj /p:Configuration=Release /p:Platform=x64
+        msbuild SimpleWeather.Windows.csproj /p:Configuration=Release /p:Platform=x64 /p:AllowUnsafeBlocks=true
 
     - name: Publish
       run: |
