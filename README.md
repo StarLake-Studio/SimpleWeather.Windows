@@ -91,6 +91,7 @@ If you encounter build issues, try the following:
    - Make sure you're using the correct .NET 6 SDK
    - Check that the Windows App SDK is properly installed
    - Try building with `msbuild` instead of `dotnet build`
+   - Ensure XAML syntax is correct, especially binding expressions
 
 5. If you encounter target framework errors:
    - Ensure that restore has run successfully with the correct runtime identifier

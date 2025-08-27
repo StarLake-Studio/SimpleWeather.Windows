@@ -147,8 +147,9 @@
                                                    Margin="10,0"/>
                                         
                                         <TextBlock Grid.Column="2" 
-                                                   Text="{Binding MinTemperature, StringFormat={}{0:F0}°/{1:F0}°, Binding.TargetNullValue={Binding MaxTemperature}}" 
-                                                   Style="{ThemeResource BodyTextBlockStyle}"/>
+                                                   Style="{ThemeResource BodyTextBlockStyle}">
+                                            <Run Text="{Binding MinTemperature, Mode=OneWay}"/>/<Run Text="{Binding MaxTemperature, Mode=OneWay}"/>°
+                                        </TextBlock>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
