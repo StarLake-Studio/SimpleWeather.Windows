@@ -16,6 +16,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <Platform>x64</Platform>
+    <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -60,4 +62,10 @@
     <Content Include="Assets\WeatherIcon.ico" />
     <Content Include="Assets\WeatherIcon.png" />
   </ItemGroup>
+  
+  <!-- Workaround for XAML compiler issue -->
+  <PropertyGroup>
+    <CsWinRTWindowsMetadata>10.0.19041.0</CsWinRTWindowsMetadata>
+    <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+  </PropertyGroup>
 </Project>

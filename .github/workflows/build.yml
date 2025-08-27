@@ -28,12 +28,15 @@ jobs:
         dotnet workload install windowsappsdk
         dotnet workload install wasm-tools
 
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
     - name: Restore dependencies
       run: dotnet restore
 
     - name: Build
       run: |
-        dotnet build -c Release
+        msbuild SimpleWeather.Windows.csproj /p:Configuration=Release /p:Platform=x64
 
     - name: Publish
       run: |

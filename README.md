@@ -80,8 +80,17 @@ If you encounter build issues, try the following:
    dotnet workload install windowsappsdk
    dotnet workload install wasm-tools
    ```
-2. Clean and rebuild the project
+
+2. Clean and rebuild the project:
+   - Delete `bin` and `obj` folders
+   - Rebuild the solution
+
 3. Ensure you have the latest Windows App SDK installed
+
+4. If you encounter XAML compiler errors:
+   - Make sure you're using the correct .NET 6 SDK
+   - Check that the Windows App SDK is properly installed
+   - Try building with `msbuild` instead of `dotnet build`
 
 ## GitHub Actions
 

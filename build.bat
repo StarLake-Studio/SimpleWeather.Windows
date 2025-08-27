@@ -63,12 +63,21 @@ goto menu
 
 :build
 echo.
+echo Installing required workloads...
+dotnet workload install windowsappsdk
+dotnet workload install wasm-tools
+
+echo.
+echo Restoring dependencies...
+dotnet restore
+
+echo.
 echo Building SimpleWeather for Windows...
 echo Configuration: %CONFIGURATION%
 echo Platform: %PLATFORM%
 echo.
 
-dotnet build -c %CONFIGURATION% -r win10-%PLATFORM% --self-contained false
+msbuild SimpleWeather.Windows.csproj /p:Configuration=%CONFIGURATION% /p:Platform=%PLATFORM%
 
 if %errorlevel% == 0 (
     echo.
