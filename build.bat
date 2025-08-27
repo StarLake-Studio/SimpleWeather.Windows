@@ -49,6 +49,7 @@ if "%choice%"=="5" (
     echo Cleaning build...
     if exist bin rmdir /s /q bin
     if exist obj rmdir /s /q obj
+    if exist publish rmdir /s /q publish
     echo Clean completed.
     goto menu
 )

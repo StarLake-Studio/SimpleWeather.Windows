@@ -8,11 +8,12 @@ echo ========================================
 set CONFIGURATION=Release
 set PLATFORM=x64
 set OUTPUT_DIR=package
+set PUBLISH_DIR=publish
 set PACKAGE_NAME=SimpleWeather-Windows
 
 echo.
 echo Building project...
-dotnet publish -c %CONFIGURATION% -r win10-%PLATFORM% --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
+dotnet publish -c %CONFIGURATION% -r win10-%PLATFORM% --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true --output %PUBLISH_DIR%
 
 if %errorlevel% neq 0 (
     echo.
@@ -28,7 +29,7 @@ mkdir %OUTPUT_DIR%
 
 echo.
 echo Copying files...
-xcopy "bin\%PLATFORM%\%CONFIGURATION%\net6.0-windows10.0.19041.0\win10-%PLATFORM%\publish\" "%OUTPUT_DIR%\" /E /I /Y
+xcopy "%PUBLISH_DIR%\*" "%OUTPUT_DIR%\" /E /I /Y
 
 echo.
 echo Creating zip archive...
@@ -37,6 +38,7 @@ powershell Compress-Archive -Path "%OUTPUT_DIR%\*" -DestinationPath "%PACKAGE_NA
 echo.
 echo Cleaning up...
 rmdir /s /q %OUTPUT_DIR%
+rmdir /s /q %PUBLISH_DIR%
 
 echo.
 echo Packaging completed successfully!
