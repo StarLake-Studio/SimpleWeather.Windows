@@ -1,0 +1,88 @@
+# SimpleWeather for Windows
+
+A simple weather application for Windows built with WinUI 3 and UWP style.
+
+![Build Status](https://github.com/StarLake-Studio/SimpleWeather.Windows/workflows/Build%20and%20Package%20SimpleWeather/badge.svg)
+
+## Features
+
+- Current weather display
+- 5-day forecast
+- Location search
+- Clean, modern UWP-style interface
+
+## Getting Started
+
+### Prerequisites
+
+- Windows 10 version 1809 or higher
+- Visual Studio 2022 or higher
+- .NET 6 SDK
+- Windows App SDK 1.4
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/StarLake-Studio/SimpleWeather.Windows.git
+   ```
+2. Open `SimpleWeather.Windows.sln` in Visual Studio
+3. Build and run the project
+
+Alternatively, you can use the provided batch scripts:
+- Run `build.bat` to build the project
+- Run `run.bat` to run the project
+
+### Project Structure
+
+```
+SimpleWeather.Windows/
+├── App.xaml/.cs              # Application entry point
+├── MainWindow.xaml/.cs       # Main window UI and logic
+├── Models/                   # Data models
+│   └── WeatherData.cs        # Weather data structures
+├── Services/                 # Business logic
+│   └── WeatherService.cs     # Weather data service
+├── .github/workflows/        # GitHub Actions workflows
+├── build.bat                 # Build script for Windows
+├── run.bat                   # Run script for Windows
+├── .gitignore                # Git ignore file
+└── README.md                 # This file
+```
+
+## Usage
+
+1. Enter a city name in the search box
+2. Click "Search" to get weather information
+3. View current weather and 5-day forecast
+
+## API Integration
+
+This application is designed to work with weather APIs. To connect to a real weather service:
+
+1. Get an API key from a weather service provider (e.g., OpenWeatherMap)
+2. Update the `API_KEY` constant in `WeatherService.cs`
+3. Implement actual API calls in the service methods
+
+## GitHub Actions
+
+This repository includes GitHub Actions for automated building and packaging:
+
+- **Build and Package SimpleWeather**: Automatically builds the application on every push or pull request to main/master branches
+- **Release**: Creates release packages when a new GitHub release is created
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Download
+
+You can download the latest release from the [Releases](https://github.com/StarLake-Studio/SimpleWeather.Windows/releases) page.

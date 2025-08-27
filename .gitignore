@@ -1,0 +1,56 @@
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Visual Studio files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+*.vc.db
+*.vc.db-shm
+*.vc.db-wal
+
+# Visual Studio 2017 auto generated files
+*.vspscc
+*.vscmd
+
+# Rider
+*.sln.iml
+
+# NuGet
+*.nuget.props
+*.nuget.targets
+
+# Windows App SDK
+*.msix
+*.msixbundle
+*.appx
+*.appxbundle
+
+# Temporary files
+*.tmp
+*.temp
+*~
+*.log
+
+# IDE files
+*.csproj.user
+*.vcxproj.filters
+
+# Packaging
+package/
+*.zip
+*.nupkg

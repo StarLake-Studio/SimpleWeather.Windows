@@ -1,0 +1,60 @@
+name: Build and Package SimpleWeather
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  release:
+    types: [ created ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: |
+        msbuild SimpleWeather.Windows.csproj /p:Configuration=Release /p:Platform=x64
+
+    - name: Create Package
+      run: |
+        # Create a directory for the package
+        mkdir package
+        # Copy the built application
+        cp -Recurse "bin\x64\Release\net6.0-windows10.0.19041.0\win10-x64\" package\
+        # Create a zip file
+        Compress-Archive -Path package\* -DestinationPath SimpleWeather-Windows-x64.zip
+
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: SimpleWeather-Windows-x64
+        path: SimpleWeather-Windows-x64.zip
+
+    - name: Upload Release Asset
+      if: github.event_name == 'release'
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: SimpleWeather-Windows-x64.zip
+        asset_name: SimpleWeather-Windows-x64.zip
+        asset_content_type: application/zip
