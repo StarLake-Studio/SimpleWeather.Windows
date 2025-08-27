@@ -93,9 +93,10 @@ If you encounter build issues, try the following:
    - Try building with `msbuild` instead of `dotnet build`
 
 5. If you encounter target framework errors:
-   - Ensure that restore has run successfully
-   - Check that the RuntimeIdentifiers in the project file match your target platform
-   - Try running `dotnet restore` and `msbuild /t:Restore` before building
+   - Ensure that restore has run successfully with the correct runtime identifier
+   - Check that the RuntimeIdentifiers in the project file include the target platform
+   - Try running `dotnet restore -r win-x64` before building
+   - Make sure the RuntimeIdentifier is explicitly set in the build command
 
 ## GitHub Actions
 

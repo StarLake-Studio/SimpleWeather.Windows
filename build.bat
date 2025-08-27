@@ -69,7 +69,7 @@ dotnet workload install wasm-tools
 
 echo.
 echo Restoring dependencies...
-dotnet restore
+dotnet restore -r win-x64
 msbuild SimpleWeather.Windows.csproj /t:Restore /p:Configuration=%CONFIGURATION% /p:Platform=%PLATFORM%
 
 echo.
@@ -78,7 +78,7 @@ echo Configuration: %CONFIGURATION%
 echo Platform: %PLATFORM%
 echo.
 
-msbuild SimpleWeather.Windows.csproj /p:Configuration=%CONFIGURATION% /p:Platform=%PLATFORM%
+msbuild SimpleWeather.Windows.csproj /p:Configuration=%CONFIGURATION% /p:Platform=%PLATFORM% /p:RuntimeIdentifier=win-x64
 
 if %errorlevel% == 0 (
     echo.

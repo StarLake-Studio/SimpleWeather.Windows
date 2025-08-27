@@ -33,12 +33,12 @@ jobs:
 
     - name: Restore dependencies
       run: |
-        dotnet restore
+        dotnet restore -r win-x64
         msbuild SimpleWeather.Windows.csproj /t:Restore /p:Configuration=Release /p:Platform=x64
 
     - name: Build
       run: |
-        msbuild SimpleWeather.Windows.csproj /p:Configuration=Release /p:Platform=x64
+        msbuild SimpleWeather.Windows.csproj /p:Configuration=Release /p:Platform=x64 /p:RuntimeIdentifier=win-x64
 
     - name: Publish
       run: |
