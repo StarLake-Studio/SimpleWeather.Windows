@@ -10,6 +10,8 @@ A simple weather application for Windows built with WinUI 3 and UWP style.
 - 5-day forecast
 - Location search
 - Clean, modern UWP-style interface
+- Chinese language interface
+- Integration with QWeather (和风天气) API for real weather data
 
 ## Getting Started
 
@@ -27,7 +29,8 @@ A simple weather application for Windows built with WinUI 3 and UWP style.
    git clone https://github.com/StarLake-Studio/SimpleWeather.Windows.git
    ```
 2. Open `SimpleWeather.Windows.sln` in Visual Studio
-3. Build and run the project
+3. Configure the QWeather API Key (see [SETUP.md](SETUP.md) for detailed instructions)
+4. Build and run the project
 
 Alternatively, you can use the provided batch scripts:
 - Run `build.bat` to build the project
@@ -42,10 +45,14 @@ SimpleWeather.Windows/
 ├── Models/                   # Data models
 │   └── WeatherData.cs        # Weather data structures
 ├── Services/                 # Business logic
-│   └── WeatherService.cs     # Weather data service
+│   ├── WeatherService.cs     # Weather data service
+│   └── WeatherConfig.cs      # Weather API configuration
+├── Assets/                   # Application assets (icons, images)
 ├── .github/workflows/        # GitHub Actions workflows
 ├── build.bat                 # Build script for Windows
 ├── run.bat                   # Run script for Windows
+├── package.bat               # Packaging script for Windows
+├── SETUP.md                  # Setup guide for QWeather API
 ├── .gitignore                # Git ignore file
 └── README.md                 # This file
 ```
@@ -58,11 +65,11 @@ SimpleWeather.Windows/
 
 ## API Integration
 
-This application is designed to work with weather APIs. To connect to a real weather service:
+This application is integrated with QWeather (和风天气) API to provide real weather data:
 
-1. Get an API key from a weather service provider (e.g., OpenWeatherMap)
-2. Update the `API_KEY` constant in `WeatherService.cs`
-3. Implement actual API calls in the service methods
+1. Get an API key from [QWeather Developer Platform](https://dev.qweather.com/)
+2. Update the `API_KEY` constant in `Services/WeatherConfig.cs`
+3. The application will automatically use the API to fetch real weather data
 
 ## GitHub Actions
 

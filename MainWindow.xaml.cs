@@ -34,7 +34,10 @@ namespace SimpleWeather.Windows
             
             _weatherService = new WeatherService();
             
-            // Load default weather data
+            // 设置默认城市
+            LocationTextBox.Text = "北京";
+            
+            // 加载默认天气数据
             LoadWeatherData();
         }
         
@@ -42,14 +45,14 @@ namespace SimpleWeather.Windows
         {
             try
             {
-                StatusText.Text = "Loading weather data...";
-                var weatherData = await _weatherService.GetWeatherAsync("New York");
+                StatusText.Text = "正在加载天气数据...";
+                var weatherData = await _weatherService.GetWeatherAsync(LocationTextBox.Text);
                 UpdateUI(weatherData);
-                StatusText.Text = "Weather data loaded";
+                StatusText.Text = $"天气数据已更新 - {DateTime.Now:HH:mm:ss}";
             }
             catch (Exception ex)
             {
-                StatusText.Text = $"Error loading weather: {ex.Message}";
+                StatusText.Text = $"加载失败: {ex.Message}";
             }
         }
         
@@ -65,30 +68,30 @@ namespace SimpleWeather.Windows
             string location = LocationTextBox.Text;
             if (string.IsNullOrWhiteSpace(location))
             {
-                StatusText.Text = "Please enter a location";
+                StatusText.Text = "请输入城市名称";
                 return;
             }
             
             try
             {
-                StatusText.Text = $"Searching for weather in {location}...";
+                StatusText.Text = $"正在搜索 {location} 的天气...";
                 var weatherData = await _weatherService.GetWeatherAsync(location);
                 UpdateUI(weatherData);
-                StatusText.Text = $"Weather updated for {location}";
+                StatusText.Text = $"天气已更新 - {DateTime.Now:HH:mm:ss}";
             }
             catch (Exception ex)
             {
-                StatusText.Text = $"Error: {ex.Message}";
+                StatusText.Text = $"搜索失败: {ex.Message}";
             }
         }
         
         private void UpdateUI(WeatherData weatherData)
         {
             LocationText.Text = weatherData.Location;
-            DateText.Text = weatherData.Date.ToString("MMMM dd, yyyy");
+            DateText.Text = weatherData.Date.ToString("yyyy年M月d日 dddd");
             DescriptionText.Text = weatherData.Description;
-            TemperatureText.Text = $"{weatherData.Temperature:F1}°C";
-            FeelsLikeText.Text = $"{weatherData.FeelsLike:F1}°C";
+            TemperatureText.Text = $"{weatherData.Temperature:F0}°C";
+            FeelsLikeText.Text = $"{weatherData.FeelsLike:F0}°C";
             HumidityText.Text = $"{weatherData.Humidity}%";
             PressureText.Text = $"{weatherData.Pressure} hPa";
             WindText.Text = $"{weatherData.WindSpeed} m/s";

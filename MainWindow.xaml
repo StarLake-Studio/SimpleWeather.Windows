@@ -5,7 +5,8 @@
     xmlns:local="using:SimpleWeather.Windows"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Title="简约天气">
 
     <Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -16,7 +17,7 @@
         <!-- Title bar -->
         <Grid x:Name="AppTitleBar" Grid.Row="0" Background="Transparent">
             <TextBlock x:Name="AppTitle" 
-                       Text="SimpleWeather" 
+                       Text="简约天气" 
                        Style="{StaticResource CaptionTextBlockStyle}" 
                        Margin="12,0,0,0"
                        VerticalAlignment="Center"/>
@@ -33,11 +34,11 @@
             <!-- Location and search -->
             <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBox x:Name="LocationTextBox" 
-                         PlaceholderText="Enter city name" 
+                         PlaceholderText="请输入城市名称" 
                          Width="200" 
                          Margin="0,0,10,0"/>
                 <Button x:Name="SearchButton" 
-                        Content="Search" 
+                        Content="搜索" 
                         Click="SearchButton_Click"/>
             </StackPanel>
             
@@ -53,14 +54,14 @@
                         
                         <StackPanel Grid.Column="0">
                             <TextBlock x:Name="LocationText" 
-                                       Text="Location" 
+                                       Text="未知位置" 
                                        Style="{ThemeResource TitleTextBlockStyle}"/>
                             <TextBlock x:Name="DateText" 
-                                       Text="Date" 
+                                       Text="日期" 
                                        Style="{ThemeResource BodyTextBlockStyle}" 
                                        Margin="0,5,0,0"/>
                             <TextBlock x:Name="DescriptionText" 
-                                       Text="Weather Description" 
+                                       Text="天气描述" 
                                        Style="{ThemeResource SubtitleTextBlockStyle}" 
                                        Margin="0,10,0,0"/>
                         </StackPanel>
@@ -80,7 +81,7 @@
                         </Grid.RowDefinitions>
                         
                         <TextBlock Grid.Row="0" 
-                                   Text="Details" 
+                                   Text="详细信息" 
                                    Style="{ThemeResource SubtitleTextBlockStyle}" 
                                    Margin="0,0,0,10"/>
                         
@@ -91,24 +92,24 @@
                             </Grid.ColumnDefinitions>
                             
                             <StackPanel Grid.Column="0">
-                                <TextBlock Text="Feels like" Style="{ThemeResource BodyTextBlockStyle}"/>
+                                <TextBlock Text="体感温度" Style="{ThemeResource BodyTextBlockStyle}"/>
                                 <TextBlock x:Name="FeelsLikeText" Text="0°C" Style="{ThemeResource BodyTextBlockStyle}" Margin="0,5,0,15"/>
                                 
-                                <TextBlock Text="Humidity" Style="{ThemeResource BodyTextBlockStyle}"/>
+                                <TextBlock Text="湿度" Style="{ThemeResource BodyTextBlockStyle}"/>
                                 <TextBlock x:Name="HumidityText" Text="0%" Style="{ThemeResource BodyTextBlockStyle}" Margin="0,5,0,15"/>
                                 
-                                <TextBlock Text="Pressure" Style="{ThemeResource BodyTextBlockStyle}"/>
+                                <TextBlock Text="气压" Style="{ThemeResource BodyTextBlockStyle}"/>
                                 <TextBlock x:Name="PressureText" Text="0 hPa" Style="{ThemeResource BodyTextBlockStyle}" Margin="0,5,0,0"/>
                             </StackPanel>
                             
                             <StackPanel Grid.Column="1">
-                                <TextBlock Text="Wind" Style="{ThemeResource BodyTextBlockStyle}"/>
+                                <TextBlock Text="风速" Style="{ThemeResource BodyTextBlockStyle}"/>
                                 <TextBlock x:Name="WindText" Text="0 m/s" Style="{ThemeResource BodyTextBlockStyle}" Margin="0,5,0,15"/>
                                 
-                                <TextBlock Text="Visibility" Style="{ThemeResource BodyTextBlockStyle}"/>
+                                <TextBlock Text="能见度" Style="{ThemeResource BodyTextBlockStyle}"/>
                                 <TextBlock x:Name="VisibilityText" Text="0 km" Style="{ThemeResource BodyTextBlockStyle}" Margin="0,5,0,15"/>
                                 
-                                <TextBlock Text="Sunrise" Style="{ThemeResource BodyTextBlockStyle}"/>
+                                <TextBlock Text="日出时间" Style="{ThemeResource BodyTextBlockStyle}"/>
                                 <TextBlock x:Name="SunriseText" Text="00:00" Style="{ThemeResource BodyTextBlockStyle}" Margin="0,5,0,0"/>
                             </StackPanel>
                         </Grid>
@@ -122,7 +123,7 @@
                         </Grid.RowDefinitions>
                         
                         <TextBlock Grid.Row="0" 
-                                   Text="5-Day Forecast" 
+                                   Text="5天预报" 
                                    Style="{ThemeResource SubtitleTextBlockStyle}" 
                                    Margin="0,0,0,10"/>
                         
@@ -146,7 +147,7 @@
                                                    Margin="10,0"/>
                                         
                                         <TextBlock Grid.Column="2" 
-                                                   Text="{Binding Temperature}" 
+                                                   Text="{Binding MinTemperature, StringFormat={}{0:F0}°/{1:F0}°, Binding.TargetNullValue={Binding MaxTemperature}}" 
                                                    Style="{ThemeResource BodyTextBlockStyle}"/>
                                     </Grid>
                                 </DataTemplate>
@@ -159,7 +160,7 @@
             <!-- Status bar -->
             <TextBlock x:Name="StatusText" 
                        Grid.Row="2" 
-                       Text="Ready" 
+                       Text="就绪" 
                        Style="{ThemeResource CaptionTextBlockStyle}" 
                        HorizontalAlignment="Center" 
                        Margin="0,10,0,0"/>
